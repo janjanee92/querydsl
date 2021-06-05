@@ -87,11 +87,11 @@ public class MemberJpaRepository {
 
         return queryFactory
                 .select(new QMemberTeamDto(
-                        member.id.as("memberId"),
+                        member.id,
                         member.username,
                         member.age,
-                        team.id.as("teamId"),
-                        team.name.as("teamName")))
+                        team.id,
+                        team.name))
                 .from(member)
                 .leftJoin(member.team, team)
                 .where(builder)
@@ -101,11 +101,11 @@ public class MemberJpaRepository {
     public List<MemberTeamDto> search(MemberSearchCondition cond) {
         return queryFactory
                 .select(new QMemberTeamDto(
-                        member.id.as("memberId"),
+                        member.id,
                         member.username,
                         member.age,
-                        team.id.as("teamId"),
-                        team.name.as("teamName")))
+                        team.id,
+                        team.name))
                 .from(member)
                 .leftJoin(member.team, team)
                 .where(
